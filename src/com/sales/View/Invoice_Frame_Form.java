@@ -8,8 +8,11 @@ package com.sales.View;
 
 import com.sales.Controller.Controller;
 import com.sales.Model.Invoice;
+import com.sales.Model.InvoicesT_Model;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTable;
 
 /**
  *
@@ -35,6 +38,7 @@ public class Invoice_Frame_Form extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         table_Invoice = new javax.swing.JTable();
+        table_Invoice.getSelectionModel().addListSelectionListener(controller);
         create_Invoice_btn = new javax.swing.JButton();
         create_Invoice_btn.addActionListener(controller);
         delete_Invoice_btn = new javax.swing.JButton();
@@ -64,19 +68,21 @@ public class Invoice_Frame_Form extends javax.swing.JFrame {
 
         table_Invoice.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(table_Invoice);
 
         create_Invoice_btn.setText("Create New Invoice");
         create_Invoice_btn.setActionCommand("Create_New_Invoice");
+        create_Invoice_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                create_Invoice_btnActionPerformed(evt);
+            }
+        });
 
         delete_Invoice_btn.setText("Delete Invoice");
         delete_Invoice_btn.setActionCommand("Delete_Invoice");
@@ -91,13 +97,10 @@ public class Invoice_Frame_Form extends javax.swing.JFrame {
 
         invoice_Line.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane2.setViewportView(invoice_Line);
@@ -205,6 +208,10 @@ public class Invoice_Frame_Form extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void create_Invoice_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_create_Invoice_btnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_create_Invoice_btnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -264,8 +271,11 @@ public class Invoice_Frame_Form extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
    private ArrayList<Invoice> invoices;
+  
    private Controller controller = new Controller(this);
 
+   private InvoicesT_Model inv_T_M;
+   
     public ArrayList<Invoice> getInvoices() {
         return invoices;
     }
@@ -273,6 +283,73 @@ public class Invoice_Frame_Form extends javax.swing.JFrame {
     public void setInvoices(ArrayList<Invoice> invoices) {
         this.invoices = invoices;
     }
+
+    public InvoicesT_Model getInv_T_M() {
+        return inv_T_M;
+    }
+
+    public void setInv_T_M(InvoicesT_Model inv_T_M) {
+        this.inv_T_M = inv_T_M;
+    }
+    
+      public JTable getTable_Invoice() {
+        return table_Invoice;
+    }
+
+    public void setTable_Invoice(JTable table_Invoice) {
+        this.table_Invoice = table_Invoice;
+    }
+
+    public JTable getInvoice_Line() {
+        return invoice_Line;
+    }
+
+    public void setInvoice_Line(JTable invoice_Line) {
+        this.invoice_Line = invoice_Line;
+    }
+
+    public JLabel getInvDateLbl() {
+        return invDateLbl;
+    }
+
+    public void setInvDateLbl(JLabel invDateLbl) {
+        this.invDateLbl = invDateLbl;
+    }
+
+    public JLabel getInvNameLbl() {
+        return invNameLbl;
+    }
+
+    public void setInvNameLbl(JLabel invNameLbl) {
+        this.invNameLbl = invNameLbl;
+    }
+
+    public JLabel getInvNumLbl() {
+        return invNumLbl;
+    }
+
+    public void setInvNumLbl(JLabel invNumLbl) {
+        this.invNumLbl = invNumLbl;
+    }
+
+    public JLabel getInvTotalLbl() {
+        return invTotalLbl;
+    }
+
+    public void setInvTotalLbl(JLabel invTotalLbl) {
+        this.invTotalLbl = invTotalLbl;
+    }
+
+    public Controller getController() {
+        return controller;
+    }
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+
+  
    
+    
    
 }

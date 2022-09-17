@@ -67,6 +67,16 @@ public class LineOfInvoice {
         this.itemCount = itemCount;
     }
 
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
+    
+    
     @Override
     public String toString() {
         return "LineOfInvoice{" + "itemnum=" + itemnum + ", itemName=" + itemName + ", itemPrice=" + itemPrice + ", itemCount=" + itemCount + '}';

@@ -28,10 +28,9 @@ public class Invoice {
         this.name_Customer = name_Customer;
     }
     
-    public double getTotalLines(){
+    public double getTotalForAllItems(){
         double t= 0;
-        for (int i= 0 ; i<lines.size() ; i++ ){
-            LineOfInvoice l = lines.get(i);
+        for ( LineOfInvoice l : getLines()){
             t+=l.getTotalCount();
         }
        return  t;

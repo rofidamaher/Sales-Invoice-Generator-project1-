@@ -7,7 +7,9 @@
 package com.sales.Controller;
 
 import com.sales.Model.Invoice;
+import com.sales.Model.InvoicesT_Model;
 import com.sales.Model.LineOfInvoice;
+import com.sales.Model.Lines_T_M;
 import com.sales.View.Invoice_Frame_Form;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,8 +22,10 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import java.lang.String;
 import java.util.ArrayList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-public class Controller implements ActionListener {
+public class Controller implements ActionListener , ListSelectionListener{
     private Invoice_Frame_Form frame_form;
     
     public Controller(Invoice_Frame_Form frame_form) {
@@ -59,6 +63,22 @@ public class Controller implements ActionListener {
        
     }
 
+     @Override
+     public void valueChanged(ListSelectionEvent e) {
+         int selectIndex = frame_form.getTable_Invoice().getSelectedRow();
+         
+         System.out.println("You have Selected row :" + selectIndex);
+         Invoice currentInvo  = frame_form.getInvoices().get(selectIndex);
+         frame_form.getInvNumLbl().setText(""+currentInvo.getNum_Customer());
+         frame_form.getInvDateLbl().setText(currentInvo.getDate_Customer());
+         frame_form.getInvNameLbl().setText(currentInvo.getName_Customer());
+         frame_form.getInvTotalLbl().setText(""+currentInvo.getTotalForAllItems());
+         Lines_T_M lines_T_M = new Lines_T_M(currentInvo.getLines());
+         frame_form.getInvoice_Line().setModel(lines_T_M);
+         lines_T_M.fireTableDataChanged();
+         
+    }
+    
     private void Load_File() {
         JFileChooser f_c = new JFileChooser();
         try{
@@ -108,6 +128,12 @@ public class Controller implements ActionListener {
             System.out.print(" items had been load  ");
         }
           frame_form.setInvoices(invoicesArr);
+          InvoicesT_Model invo_T_M = new InvoicesT_Model(invoicesArr);
+          frame_form.setInv_T_M(invo_T_M);
+          frame_form.getTable_Invoice().setModel(invo_T_M);
+          frame_form.getInv_T_M().fireTableDataChanged();
+          
+          
         }
         
         
@@ -129,5 +155,7 @@ public class Controller implements ActionListener {
 
     private void Delete_Item() {
         }
+
+   
     
 }
