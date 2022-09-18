@@ -78,6 +78,9 @@ public class Invoice {
         this.lines = lines;
     }
 
+    public String getAsCSV(){
+        return num_Customer + "," + date_Customer + "," + name_Customer;
+    }
    
     
 }

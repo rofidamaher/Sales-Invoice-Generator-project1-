@@ -82,6 +82,8 @@ public class LineOfInvoice {
         return "LineOfInvoice{" + "itemnum=" + itemnum + ", itemName=" + itemName + ", itemPrice=" + itemPrice + ", itemCount=" + itemCount + '}';
     }
     
-    
+    public String getAsCSV(){
+        return itemnum + "," + itemName + "," + itemPrice + "," + itemCount;
+    }
     
 }

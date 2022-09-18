@@ -37,6 +37,10 @@ public class Lines_T_M extends AbstractTableModel{
     public String getColumnName(int column) {
          return col[column];     
     } 
+
+    public ArrayList<LineOfInvoice> getLin() {
+        return lin;
+    }
    
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {

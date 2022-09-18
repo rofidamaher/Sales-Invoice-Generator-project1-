@@ -348,6 +348,16 @@ public class Invoice_Frame_Form extends javax.swing.JFrame {
         this.controller = controller;
     }
 
+    public int get_Next_InvoNum(){
+        int n = 0;
+        for (Invoice invo : invoices){
+            if (invo.getNum_Customer() > n ){
+                n = invo.getNum_Customer();
+            }
+            
+        }
+        return ++n ;
+    }
   
    
     
